@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physical 4 U Home Health - Your Trusted Home Health Agency</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        :root {
+            --primary-color: #117319;
+            --primary-dark: #0d5513;
+            --primary-light: #1a8f24;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            position: absolute;
+            top: 50%;
+            left: 30px;
+            transform: translateY(-50%);
+            z-index: 1000;
+            background: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background: var(--primary-color);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .language-toggle:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        header {
+            background: var(--primary-color);
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 100px;
+        }
+
+        .header-content h1 {
+            font-size: 2.2em;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+        }
+
+        .header-content p {
+            font-size: 1.1em;
+            margin: 0 auto;
+            max-width: 600px;
+            opacity: 0.9;
+        }
+
+        section {
+            padding: 80px 0;
+        }
+
+        .services {
+            background: #f9f9f9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            overflow: hidden;
+            border: 1px solid #eee;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(17, 115, 25, 0.15);
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .service-content {
+            padding: 20px;
+        }
+
+        .service-icon {
+            color: var(--primary-color);
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .service-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .insurance-section {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .insurance-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light));
+        }
+
+        .insurance-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .insurance-item {
+            background: white;
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid #e1e1e1;
+        }
+
+        .insurance-item:hover {
+            background: white;
+            box-shadow: 0 4px 12px rgba(17, 115, 25, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .contact-form-section {
+            background: #fff;
+            padding: 80px 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary-color);
+            outline: none;
+        }
+
+        .required {
+            color: #dc3545;
+            font-size: 0.8em;
+            margin-left: 5px;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        .privacy-notice {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .contact {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .contact h2 {
+            color: white;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-card {
+            text-align: center;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+
+        section h2 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2em;
+        }
+
+        [lang="es"] {
+            display: none;
+        }
+
+        .spanish-active [lang="en"] {
+            display: none;
+        }
+
+        .spanish-active [lang="es"] {
+            display: block;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .modal.show {
+            display: flex;
+            opacity: 1;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            transform: translateY(-20px);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal.show .modal-content {
+            transform: translateY(0);
+        }
+
+        .modal-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            color: var(--primary-color);
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .modal-message {
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+
+        .modal-close {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: var(--primary-light);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                position: relative;
+                top: 0;
+                left: 50%;
+                transform: translateX(-50%);
+                margin-bottom: 20px;
+            }
+
+            .header-content {
+                padding: 0 20px;
+            }
+
+            .header-content h1 {
+                font-size: 1.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="language-toggle" onclick="toggleLanguage()">Español</button>
+    
+    <header>
+        <div class="container header-content">
+            <div lang="en">
+                <h1>Welcome to Physical 4 U Home Health</h1>
+                <p>Your trusted home health agency in Miami Lakes, FL, proudly serving Miami-Dade and Monroe counties.</p>
+            </div>
+            <div lang="es">
+                <h1>Bienvenidos a Physical 4 U Home Health</h1>
+                <p>Su agencia de salud en el hogar de confianza en Miami Lakes, FL, sirviendo con orgullo a los condados de Miami-Dade y Monroe.</p>
+            </div>
+        </div>
+        <div class="logo">
+            <img src="logo.jpg" alt="Physical 4 U Logo">
+        </div>
+    </header>
+
+    <section class="services">
+        <div class="container">
+            <div lang="en">
+                <h2>Our Specialized Services</h2>
+            </div>
+            <div lang="es">
+                <h2>Nuestros Servicios Especializados</h2>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="cr=w_360,h_270.jpg" alt="Registered Nurses">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-user-nurse"></i>
+                        </div>
+                        <div lang="en">
+                            <h3>Registered Nurses (RNs)</h3>
+                            <p>Skilled in wound care, IV therapy, post-operative care, and psychiatric patient support.</p>
+                        </div>
+                        <div lang="es">
+                            <h3>Enfermeras Registradas (RNs)</h3>
+                            <p>Especializadas en el cuidado de heridas, terapia IV, cuidado post-operatorio y apoyo a pacientes psiquiátricos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="Home Health Aides.jpg" alt="Health Aides">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div lang="en">
+                            <h3>Home Health Aides & CNAs</h3>
+                            <p>Compassionate professionals assisting with daily personal care and companionship.</p>
+                        </div>
+                        <div lang="es">
+                            <h3>Asistentes de Salud en el Hogar y CNAs</h3>
+                            <p>Profesionales compasivos que ayudan con el cuidado personal diario y brindan compañía.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="Physcialtherapy.jpg" alt="Physical Therapy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-walking"></i>
+                        </div>
+                        <div lang="en">
+                            <h3>Physical Therapy</h3>
+                            <p>Focused on restoring mobility, strength, and balance to help patients regain independence.</p>
+                        </div>
+                        <div lang="es">
+                            <h3>Terapia Física</h3>
+                            <p>Enfocada en restaurar la movilidad, fuerza y equilibrio para ayudar a los pacientes a recuperar su independencia.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="occupationaltherapy.jpg" alt="Occupational Therapy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-hand-holding-medical"></i>
+                        </div>
+                        <div lang="en">
+                            <h3>Occupational Therapy</h3>
+                            <p>Helping patients enhance their ability to perform daily tasks and adapt to challenges.</p>
+                        </div>
+                        <div lang="es">
+                            <h3>Terapia Ocupacional</h3>
+                            <p>Ayudando a los pacientes a mejorar su capacidad para realizar tareas diarias y adaptarse a los desafíos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="speechtherapy.jpg" alt="Speech Therapy">
+                    </div>
+                    <div class="service-content">
+                        <div class="service-icon">
+                            <i class="fas fa-comments"></i>
+                        </div>
+                        <div lang="en">
+                            <h3>Speech Therapy</h3>
+                            <p>Supporting patients in improving communication, swallowing, and cognitive skills.</p>
+                        </div>
+                        <div lang="es">
+                            <h3>Terapia del Habla</h3>
+                            <p>Apoyando a los pacientes en la mejora de la comunicación, deglución y habilidades cognitivas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="insurance-section">
+        <div class="container">
+            <div lang="en">
+                <h2>Insurance Plans We Accept</h2>
+            </div>
+            <div lang="es">
+                <h2>Planes de Seguro que Aceptamos</h2>
+            </div>
+            <div class="insurance-list">
+                <div class="insurance-item">APD-WAIVER</div>
+                <div class="insurance-item">Aetna</div>
+                <div class="insurance-item">AmBetter</div>
+                <div class="insurance-item">American Specialty Health</div>
+                <div class="insurance-item">Blue Cross Blue Shield of Florida</div>
+                <div class="insurance-item">CareCentrix</div>
+                <div class="insurance-item">Cigna</div>
+                <div class="insurance-item">Coastal Care</div>
+                <div class="insurance-item">Florida Community Care</div>
+                <div class="insurance-item">Florida Blue</div>
+                <div class="insurance-item">Humana</div>
+                <div class="insurance-item">Molina</div>
+                <div class="insurance-item">Medicare</div>
+                <div class="insurance-item">United Healthcare</div>
+                <div class="insurance-item">Integrated Homecare</div>
+                <div class="insurance-item">Simply</div>
+                <div class="insurance-item">Sunshine</div>
+                <div class="insurance-item">Little Havana</div>
+                <div class="insurance-item">StayWell</div>
+                <div class="insurance-item">Children's Medical Services</div>
+                <div class="insurance-item">WellCare</div>
+                <div class="insurance-item">WellAmerica</div>
+                <div class="insurance-item">Oscar</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-form-section">
+        <div class="container">
+            <div lang="en">
+                <h2>Get in Touch with Us</h2>
+                <div class="form-container">
+                    <form id="contactForm" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullName">Full Name <span class="required">*</span></label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number <span class="required">*</span></label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" placeholder="Tell us how we can assist you."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                        <p class="privacy-notice">Your privacy is important to us. The information you provide will only be used to contact you about your inquiry.</p>
+                    </form>
+                </div>
+            </div>
+            <div lang="es">
+                <h2>Contáctenos</h2>
+                <div class="form-container">
+                    <form id="contactFormEs" onsubmit="return handleSubmit(event)">
+                        <div class="form-group">
+                            <label for="fullNameEs">Nombre Completo <span class="required">*</span></label>
+                            <input type="text" id="fullNameEs" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phoneEs">Número de Teléfono <span class="required">*</span></label>
+                            <input type="tel" id="phoneEs" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="messageEs">Mensaje</label>
+                            <textarea id="messageEs" name="message" placeholder="Díganos cómo podemos ayudarle."></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn">Enviar</button>
+                        <p class="privacy-notice">Su privacidad es importante para nosotros. La información que proporcione solo se utilizará para contactarlo sobre su consulta.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact">
+        <div class="container">
+            <div lang="en">
+                <h2>Contact Us Today</h2>
+            </div>
+            <div lang="es">
+                <h2>Contáctenos Hoy</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-card">
+                    <div lang="en">
+                        <h3>Address</h3>
+                    </div>
+                    <div lang="es">
+                        <h3>Dirección</h3>
+                    </div>
+                    <p>5729 NW 151st Street<br>Miami Lakes, FL 33014</p>
+                </div>
+                <div class="contact-card">
+                    <div lang="en">
+                        <h3>Phone & Fax</h3>
+                    </div>
+                    <div lang="es">
+                        <h3>Teléfono y Fax</h3>
+                    </div>
+                    <p>Phone: 786-558-7122<br>Fax: 786-558-9350</p>
+                </div>
+                <div class="contact-card">
+                    <h3>Email</h3>
+                    <p>physical4u@gmail.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="modal" id="confirmationModal">
+        <div class="modal-content">
+            <div lang="en">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="modal-title">Thank You!</h3>
+                <p class="modal-message">Your message has been sent successfully. Our team will contact you soon.</p>
+                <button class="modal-close" onclick="closeModal()">Close</button>
+            </div>
+            <div lang="es">
+                <div class="modal-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h3 class="modal-title">¡Gracias!</h3>
+                <p class="modal-message">Su mensaje ha sido enviado con éxito. Nuestro equipo se pondrá en contacto con usted pronto.</p>
+                <button class="modal-close" onclick="closeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-content">
+            <div lang="en">
+                <div class="modal-icon" style="color: #dc3545;">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h3 class="modal-title" style="color: #dc3545;">Error</h3>
+                <p class="modal-message">Sorry, there was a problem sending your message. Please try again or contact us directly.</p>
+                <button class="modal-close" onclick="closeModal()">Close</button>
+            </div>
+            <div lang="es">
+                <div class="modal-icon" style="color: #dc3545;">
+                    <i class="fas fa-exclamation-circle"></i>
+                </div>
+                <h3 class="modal-title" style="color: #dc3545;">Error</h3>
+                <p class="modal-message">Lo sentimos, hubo un problema al enviar su mensaje. Por favor, inténtelo de nuevo o contáctenos directamente.</p>
+                <button class="modal-close" onclick="closeModal()">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleLanguage() {
+            const body = document.body;
+            const button = document.querySelector('.language-toggle');
+            
+            if (body.classList.contains('spanish-active')) {
+                body.classList.remove('spanish-active');
+                button.textContent = 'Español';
+            } else {
+                body.classList.add('spanish-active');
+                button.textContent = 'English';
+            }
+        }
+
+        function showModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            document.querySelectorAll('.modal').forEach(modal => {
+                modal.classList.remove('show');
+            });
+        }
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            const form = event.target;
+            const formData = new FormData(form);
+            
+            try {
+                const response = await fetch('https://n8n.klcdigitalsolutions.com/webhook/html-form-handler', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        nombre: formData.get('fullName'),
+                        telefono: formData.get('phone'),
+                        comentarios: formData.get('message')
+                    })
+                });
+
+                if (response.ok) {
+                    form.reset();
+                    showModal('confirmationModal');
+                } else {
+                    throw new Error('Network response was not ok');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                showModal('errorModal');
+            }
+            
+            return false;
+        }
+
+        // Close modal when clicking outside
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+
+        // Close modal with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
+        });
+    </script>
+</body>
+</html>
